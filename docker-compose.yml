@@ -2,7 +2,7 @@ version: "3.7"
 services:
   nginx-elofy:
     image: nginx:1.17.3
-    container_name: nginx
+    container_name: nginx-elofy
     ports:
       - "8080:80"
     volumes:
