@@ -15,7 +15,7 @@ class UserModel extends DB
     protected function _insert($data)
     {
         return $this->query("
-            INSERT INTO `users`(`name`) VALUES ('{$data['name']}')
+            INSERT INTO `users`(`name`,`email`,`senha`) VALUES ('{$data['name']}','{$data['email']}','{$data['senha']}')
         ");
     }
 
@@ -24,6 +24,20 @@ class UserModel extends DB
     {
         return $this->query("
             DELETE FROM `users` WHERE id = '{$id}'
+        ");
+    }
+
+    protected function _edit($data)
+    {
+        return $this->query("
+            UPDATE `users` SET name = '{$data['name']}' WHERE id = '{$data['id']}';
+        ");
+    }
+
+    protected function _login($data)
+    {
+        return $this->query("
+            SELECT email from `users` where email = '{$data['email']}' AND senha = '{$data['senha']}'
         ");
     }
 }

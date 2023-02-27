@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/';
+// const url = 'http://localhost:8080/';
+
+const url = 'http://localhost/Sistema-Elofy/backend/';
 
 
 // useEffect(() => {
@@ -27,6 +29,21 @@ export const setData = async (data) => {
 		form.append('name', data.name);
 		console.log(data);
 		const res = await axios.post(`${url}user/add`, form);
+
+		return res.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+
+export const editData = async (data) => {
+	try {
+		var form = new FormData();
+		form.append('id', data.id);
+		form.append('name', data.name);
+
+		const res = await axios.post(`${url}user/edit`, form);
 
 		return res.data;
 	} catch (err) {
