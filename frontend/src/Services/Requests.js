@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost/teste_elofy/backend/';
+const url = 'http://localhost:8080/';
 
 
 // useEffect(() => {
@@ -9,7 +9,7 @@ const url = 'http://localhost/teste_elofy/backend/';
 
 export const getData = async () => {
 	try {
-		const res = await axios.get(`${url}/user/list`, {
+		const res = await axios.get(`${url}user/list`, {
 			headers: {},
 			params: {}
 		});
@@ -22,11 +22,10 @@ export const getData = async () => {
 
 export const setData = async (data) => {
 	try {
-
 		var form = new FormData();
 
 		form.append('name', data.name);
-
+		console.log(data);
 		const res = await axios.post(`${url}user/add`, form);
 
 		return res.data;
@@ -37,7 +36,7 @@ export const setData = async (data) => {
 
 
 
-export const deletData = async (id) => {
+export const deleteData = async (id) => {
 	try {
 
 		var form = new FormData();

@@ -5,7 +5,7 @@ class DB
 
     protected function connect()
     {
-       self::install();
+        self::install();
 
         $database = parse_ini_file(__DIR__ . '/../env.conf', 1)['database'];
         $host = $database["host"];
@@ -15,6 +15,7 @@ class DB
         try {
             $con = new PDO('mysql:host=' . $host . ';dbname=' . $db, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, 0);
             return $con;
         } catch (PDOException $e) {
             echo "Erro encontrado: " . $e->getMessage();
@@ -58,14 +59,11 @@ class DB
                 $con->query($file);
 
 
-               file_put_contents(__DIR__ . '/../install.conf', "[installed]\ninstall='true'");
-
-
+                file_put_contents(__DIR__ . '/../install.conf', "[installed]\ninstall='true'");
             } catch (PDOException $e) {
                 echo "Erro encontrado: " . $e->getMessage();
                 exit;
             }
-
         }
     }
 }

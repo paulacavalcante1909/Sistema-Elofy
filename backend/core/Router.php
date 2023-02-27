@@ -22,7 +22,7 @@ class Router
             __DIR__ . "/../routes/",
             FilesystemIterator::SKIP_DOTS
         );
-        
+
 
         $iterator =  new RecursiveIteratorIterator($directory_iterator);
 
@@ -68,6 +68,9 @@ class Router
 
         if (!isset($this->routesList[$this->currentRoute]))
             $this->errorRoute("Rota não existente");
+
+
+
 
         $this->verifyController();
 

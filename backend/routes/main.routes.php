@@ -1,5 +1,5 @@
 <?php
 
-$this->addRoutes([
-    '' => ['UserController', 'list'],
-]);
+// $this->addRoutes([
+//     '' => ['UserController', 'list'],
+// ]);

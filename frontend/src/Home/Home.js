@@ -1,4 +1,4 @@
-import { setData, getData, deletData } from "../Services/Requests";
+import { setData, getData, deleteData } from "../Services/Requests";
 
 import { useState, useEffect } from 'react';
 
@@ -31,7 +31,7 @@ export default function Home(props) {
         let text = "Tem certeza que deseja excluir este usuário?";
         if (window.confirm(text) === true) {
 
-            deletData(id).then((res) => {
+            deleteData(id).then((res) => {
                 if (res.status === 200) {
                     alert(res.message);
                     getListUsers();

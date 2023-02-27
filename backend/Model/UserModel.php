@@ -20,10 +20,10 @@ class UserModel extends DB
     }
 
 
-    protected function _delete($data)
+    protected function _delete($id)
     {
         return $this->query("
-            DELETE FROM `users` WHERE id = '{$data}'
+            DELETE FROM `users` WHERE id = '{$id}'
         ");
     }
 }

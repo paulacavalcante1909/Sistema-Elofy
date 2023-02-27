@@ -19,7 +19,7 @@ class UserController extends UserModel
     public function insert()
     {
         if (!Request::getPostParam('name'))
-            Response::returnError('campo nome obrigatório');
+            return Response::returnError('campo nome obrigatório');
 
         $data = [
             'name' => Request::getPostParam('name')
