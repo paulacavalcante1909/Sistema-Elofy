@@ -1,4 +1,4 @@
-# Instalando o projeto
+# Instalando o projeto com docker 
 
 Este projeto contém o frontend (reactJS) e o backend (PHP)
 

@@ -18,4 +18,12 @@ class UserModel extends DB
             INSERT INTO `users`(`name`) VALUES ('{$data['name']}')
         ");
     }
+
+
+    protected function _delete($data)
+    {
+        return $this->query("
+            DELETE FROM `users` WHERE id = '{$data}'
+        ");
+    }
 }

@@ -65,10 +65,6 @@ class Router
      */
     public function verifyCurrentRoute()
     {
-        if(empty($this->currentRoute)){
-            $this->currentMethod = 'list';
-            $this->currentController = 'User';
-        }
 
         if (!isset($this->routesList[$this->currentRoute]))
             $this->errorRoute("Rota não existente");

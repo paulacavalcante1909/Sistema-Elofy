@@ -10,26 +10,34 @@ class UserController extends UserModel
     public function list()
     {
         try {
-            Response::returnSuccess($this->_list());
+            Response::returnSuccess(null, $this->_list(), 200);
         } catch (\Throwable $th) {
-            Response::returnError($th);
+            Response::returnError("", $th);
         }
     }
 
     public function insert()
     {
-
-        if(!Request::getPostParam('name'))
+        if (!Request::getPostParam('name'))
             Response::returnError('campo nome obrigatório');
 
         $data = [
             'name' => Request::getPostParam('name')
         ];
 
-        $this->_insert($data);
+        $resp = $this->_insert($data);
+
+        return Response::returnSuccess('Dado Inserido com sucesso!', $resp, 200);
+    }
 
 
-        
+    public function delete()
+    {
+        if (!Request::getPostParam('id'))
+            Response::returnError('campo id obrigatório');
 
+        $resp = $this->_delete(Request::getPostParam('id'));
+
+        return Response::returnSuccess('Dado Deletado com sucesso!', $resp, 200);
     }
 }
